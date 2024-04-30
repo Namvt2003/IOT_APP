@@ -16,7 +16,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven(url = "https://repo.eclipse.org/content/repositories/paho-releases/")
+        // install paho-snapshots library
+        maven {
+            url = uri("https://repo.eclipse.org/content/repositories/paho-snapshots/")
+        }
     }
 }
 

@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.iot_application"
-    compileSdk = 34
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "com.example.iot_application"
@@ -30,13 +30,22 @@ android {
 }
 
 dependencies {
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.activity)
-    implementation(libs.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
-    implementation(libs.org.eclipse.paho.client.mqttv3)
-    implementation(libs.org.eclipse.paho.android.service)
+    //implementation(libs.appcompat)
+    //implementation(libs.material)
+    //implementation(libs.activity)
+    //implementation(libs.constraintlayout)
+    //testImplementation(libs.junit)
+    //androidTestImplementation(libs.ext.junit)
+    //androidTestImplementation(libs.espresso.core)
+    //implementation(libs.org.eclipse.paho.client.mqttv3)
+    //implementation(libs.org.eclipse.paho.android.service)
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("com.google.android.material:material:1.7.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.0")
+    implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
 }
