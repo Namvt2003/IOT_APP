@@ -5,6 +5,8 @@ import android.os.Bundle;
 //import androidx.activity.EdgeToEdge;
 //import Log
 import android.util.Log;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +19,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MainActivity extends AppCompatActivity {
 
     MQTTHelper mqttHelper;
+    TextView txtTemp, txtHumid, txtLight, txtSoil, txtPump, txtAI, txtTemp2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        txtTemp = findViewById(R.id.temperature);
         startMQTT();
     }
 
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 Log.d("TEST", topic + "***" + message.toString());
+                if(topic.equals("tien_le29/feeds/do-an-da-nganh.nhiet-do")){
+                    txtTemp.setText(message.toString());
+                }
             }
 
             @Override
