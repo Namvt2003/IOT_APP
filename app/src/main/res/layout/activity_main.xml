@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="#7EC8E3">
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +21,13 @@
             android:textSize="28sp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/green_rounded_corner"
             android:textStyle="bold"
             android:shadowColor="#000000"
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="1"/>
+
 
     </LinearLayout>
 
@@ -112,7 +113,7 @@
             android:text="Light"
             android:textSize="24sp"
             android:textColor="#ffffff"
-            android:background="@drawable/rounded_corner"
+            android:background="@drawable/green_rounded_corner"
             android:layout_marginBottom="8dp"/>
 
     </LinearLayout>

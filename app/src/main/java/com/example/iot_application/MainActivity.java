@@ -19,7 +19,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MainActivity extends AppCompatActivity {
 
     MQTTHelper mqttHelper;
-    TextView txtTemp, txtHumid, txtLight, txtSoil, txtPump, txtAI, txtTemp2;
+    TextView txtTemp, txtHumid, air_quality, txtLight, txtSoil, txtPump, txtAI, txtTemp2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         txtTemp = findViewById(R.id.temperature);
+        txtHumid = findViewById(R.id.humidity);
+        air_quality = findViewById(R.id.air_quality);
         startMQTT();
     }
 
@@ -51,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
             public void messageArrived(String topic, MqttMessage message) throws Exception {
                 Log.d("TEST", topic + "***" + message.toString());
                 if(topic.equals("tien_le29/feeds/do-an-da-nganh.nhiet-do")){
-                    txtTemp.setText(message.toString());
+                    txtTemp.setText(message.toString() + "°C");
+                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am")){
+                    txtHumid.setText(message.toString() + "%");
+                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.air-quality")){
+                    air_quality.setText(message.toString());
                 }
             }
 
