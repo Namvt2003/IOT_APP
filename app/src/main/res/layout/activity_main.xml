@@ -21,7 +21,7 @@
             android:textSize="28sp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:background="#00C853"
+            android:background="@drawable/rounded_corner"
             android:textStyle="bold"
             android:shadowColor="#000000"
             android:shadowDx="1"
@@ -42,14 +42,14 @@
             android:id="@+id/temperature"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:text="30°C"
-            android:textSize="24sp"
-            android:textColor="#ffffff"
+            android:background="@drawable/rounded_corner"
             android:gravity="center"
-            android:background="#FF9800"
-            android:textStyle="bold"
-            android:layout_marginEnd="4dp"/>
+            android:text="30°C"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/humidity"
@@ -60,7 +60,7 @@
             android:textSize="24sp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:background="#FF9800"
+            android:background="@drawable/rounded_corner"
             android:textStyle="bold"
             android:layout_marginStart="4dp"/>
     </LinearLayout>
@@ -82,7 +82,7 @@
             android:textSize="20sp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:background="#FF9800"
+            android:background="@drawable/rounded_corner"
             android:textStyle="bold"
             android:layout_marginEnd="4dp"/>
 
@@ -94,7 +94,7 @@
             android:textSize="20sp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:background="#FF9800"
+            android:background="@drawable/rounded_corner"
             android:textStyle="bold"
             android:layout_marginStart="4dp"/>
     </LinearLayout>
@@ -112,15 +112,8 @@
             android:text="Light"
             android:textSize="24sp"
             android:textColor="#ffffff"
-            android:background="#00C853"
+            android:background="@drawable/rounded_corner"
             android:layout_marginBottom="8dp"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Another Button"
-            android:textSize="24sp"
-            android:textColor="#ffffff"
-            android:background="#00C853"/>
     </LinearLayout>
 </LinearLayout>
