@@ -26,7 +26,7 @@ public class MQTTHelper {
 
     final String clientId = "12345678";
     final String username = "tien_le29";
-    final String password = "aio_cmfR93G5WL5Cb6PyQZriReJuCjfU";
+    final String password = " ";
     MemoryPersistence memPer;
     MqttClient client;
     final String serverUri = "tcp://io.adafruit.com:1883";
