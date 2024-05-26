@@ -8,18 +8,24 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+
 public class MainActivity extends AppCompatActivity {
 
     MQTTHelper mqttHelper;
-    TextView txtTemp, txtHumid, air_quality, txtLight, txtSoil, txtPump, txtAI, txtTemp2;
+    TextView txtTemp, txtHumid, air_quality, txtSoil,  txtAI, txtTemp2;
+    SwitchCompat txtPump,txtLight;
+    private MqttAndroidClient mqttAndroidClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         txtTemp = findViewById(R.id.temperature);
         txtHumid = findViewById(R.id.humidity);
         air_quality = findViewById(R.id.air_quality);
+        txtLight = findViewById(R.id.light);
+        txtPump = findViewById(R.id.turbine);
+        setupUI();
         startMQTT();
     }
 
@@ -56,15 +65,43 @@ public class MainActivity extends AppCompatActivity {
                     txtTemp.setText(message.toString() + "°C");
                 } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am")){
                     txtHumid.setText(message.toString() + "%");
-                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.air-quality")){
+                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.air-quality")) {
                     air_quality.setText(message.toString());
                 }
             }
+
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken token) {
 
             }
         });
+    }
+    public void setupUI(){
+        txtPump = findViewById(R.id.turbine);
+        txtPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            String topic = "tien_le29/feeds/do-an-da-nganh.may-bom";
+            String message = isChecked ? "on" : "off";
+            try {
+                mqttHelper.publicMessage(topic, message);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+
+         txtLight= findViewById(R.id.light);
+        txtLight.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            String topic = "tien_le29/feeds/do-an-da-nganh.bong-den";
+            String message = isChecked ? "on" : "off";
+            try {
+                mqttHelper.publicMessage(topic, message);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+
+
     }
 }

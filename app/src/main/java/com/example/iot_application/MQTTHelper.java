@@ -1,7 +1,9 @@
 package com.example.iot_application;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.os.IBinder;
 import android.util.Log;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
@@ -10,25 +12,31 @@ import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
+import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 
 public class MQTTHelper {
     public MqttAndroidClient mqttAndroidClient;
 
-    public final String[] arrayTopics = {"tien_le29/feeds/do-an-da-nganh.gdd", "tien_le29/feeds/do-an-da-nganh.anh-sang", "tien_le29/feeds/do-an-da-nganh.bong-den", "tien_le29/feeds/do-an-da-nganh.do-am", "tien_le29/feeds/do-an-da-nganh.do-am-dat", "tien_le29/feeds/do-an-da-nganh.may-bom", "tien_le29/feeds/do-an-da-nganh.nhan-dien-ai", "tien_le29/feeds/do-an-da-nganh.nhiet-do"};
+    public final String[] arrayTopics = {"tien_le29/feeds/do-an-da-nganh.gdd", "tien_le29/feeds/do-an-da-nganh.anh-sang", "tien_le29/feeds/do-an-da-nganh.bong-den", "tien_le29/feeds/do-an-da-nganh.do-am", "tien_le29/feeds/do-an-da-nganh.do-am-dat",  "tien_le29/feeds/do-an-da-nganh.nhan-dien-ai", "tien_le29/feeds/do-an-da-nganh.nhiet-do","tien_le29/feeds/do-an-da-nganh.may-bom"};
 
     final String clientId = "12345678";
-    final String username = "nguyenbrat";
-    final String password = "aio_XKti77vACxGu4CAgd9458zGmSYvc";
-
+    final String username = "tien_le29";
+    final String password = "aio_cmfR93G5WL5Cb6PyQZriReJuCjfU";
+    MemoryPersistence memPer;
+    MqttClient client;
     final String serverUri = "tcp://io.adafruit.com:1883";
 
     public MQTTHelper(Context context){
         mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
         mqttAndroidClient.setCallback(new MqttCallbackExtended() {
+
+
+
             @Override
             public void connectComplete(boolean b, String s) {
                 Log.w("mqtt", s);
@@ -36,17 +44,22 @@ public class MQTTHelper {
 
             @Override
             public void connectionLost(Throwable throwable) {
-
+                Log.d("MQTT", "MQTT Server connection lost" + throwable.getMessage());
             }
 
             @Override
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
-                Log.w("Mqtt", mqttMessage.toString());
+//                Log.w("Mqtt", mqttMessage.toString());
+                Log.d("TEST", topic + "***" + mqttMessage.toString());
             }
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {
-
+                try {
+                    Log.d("MQTT", "Delivery complete for message: "  );
+                } catch (Exception e) {
+                    Log.e("MQTT", "Error in delivery completion", e);
+                }
             }
         });
         connect();
@@ -111,5 +124,9 @@ public class MQTTHelper {
             }
         }
     }
+    public void publicMessage(String topic, String msg) throws Exception{
 
+            Log.d("TEST", topic + "***" + msg);
+            mqttAndroidClient.publish(topic, new MqttMessage(msg.getBytes()));
+    }
 }
