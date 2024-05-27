@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         });
         txtTemp = findViewById(R.id.temperature);
         txtHumid = findViewById(R.id.humidity);
-        air_quality = findViewById(R.id.air_quality);
+        //air_quality = findViewById(R.id.air_quality);
         txtLight = findViewById(R.id.light);
         txtPump = findViewById(R.id.turbine);
+        txtSoil = findViewById(R.id.soil);
+        txtAI = findViewById(R.id.AI);
         setupUI();
         startMQTT();
     }
@@ -65,8 +67,10 @@ public class MainActivity extends AppCompatActivity {
                     txtTemp.setText(message.toString() + "°C");
                 } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am")){
                     txtHumid.setText(message.toString() + "%");
-                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.air-quality")) {
-                    air_quality.setText(message.toString());
+                } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am-dat")){
+                    txtSoil.setText(message.toString() + "%");
+                } else if (topic.equals("tien_le29/feeds/do-an-da-nganh.nhan-dien-ai")){
+                    txtAI.setText(message.toString());
                 }
             }
 
@@ -81,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         txtPump = findViewById(R.id.turbine);
         txtPump.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String topic = "tien_le29/feeds/do-an-da-nganh.may-bom";
-            String message = isChecked ? "on" : "off";
+            String message = isChecked ? "1" : "0";
             try {
                 mqttHelper.publicMessage(topic, message);
             } catch (Exception e) {
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
          txtLight= findViewById(R.id.light);
         txtLight.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String topic = "tien_le29/feeds/do-an-da-nganh.bong-den";
-            String message = isChecked ? "on" : "off";
+            String message = isChecked ? "1" : "0";
             try {
                 mqttHelper.publicMessage(topic, message);
             } catch (Exception e) {

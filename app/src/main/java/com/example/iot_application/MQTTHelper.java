@@ -24,9 +24,9 @@ public class MQTTHelper {
 
     public final String[] arrayTopics = {"tien_le29/feeds/do-an-da-nganh.gdd", "tien_le29/feeds/do-an-da-nganh.anh-sang", "tien_le29/feeds/do-an-da-nganh.bong-den", "tien_le29/feeds/do-an-da-nganh.do-am", "tien_le29/feeds/do-an-da-nganh.do-am-dat",  "tien_le29/feeds/do-an-da-nganh.nhan-dien-ai", "tien_le29/feeds/do-an-da-nganh.nhiet-do","tien_le29/feeds/do-an-da-nganh.may-bom"};
 
-    final String clientId = "12345678";
-    final String username ="";
-    final String password = "";
+    final String clientId = "87654321";
+    final String username ="tien_le29";
+    final String password = "aio_RegQ93MLDrzFJyKOn2M1zc0s9ELd";
     MemoryPersistence memPer;
     MqttClient client;
     final String serverUri = "tcp://io.adafruit.com:1883";
