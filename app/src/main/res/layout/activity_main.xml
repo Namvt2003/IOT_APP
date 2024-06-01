@@ -85,6 +85,20 @@
             android:id="@+id/humidityLabel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="#D80000"
+            android:gravity="center"
+            android:text="Humidity"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/lightLabel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Light"
             android:textSize="24sp"
@@ -112,10 +126,23 @@
             android:text="30°C"
             android:textColor="#ffffff"
             android:textSize="24sp"
-            android:textStyle="bold" />
-
+            android:textStyle="bold"
+            />
         <TextView
             android:id="@+id/humidity"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner"
+            android:gravity="center"
+            android:text="50 %"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/lux"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -147,6 +174,9 @@
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:textStyle="bold" />
+
+
+
 
         <TextView
             android:id="@+id/AILabel"
@@ -225,6 +255,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
+        <Button
+            android:id="@+id/btnGoToGraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Graph"
+            android:layout_marginTop="16dp"
+            android:background="@color/design_default_color_primary"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 </LinearLayout>

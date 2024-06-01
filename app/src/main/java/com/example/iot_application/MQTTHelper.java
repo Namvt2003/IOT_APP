@@ -18,6 +18,9 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 public class MQTTHelper {
     public MqttAndroidClient mqttAndroidClient;
@@ -26,11 +29,11 @@ public class MQTTHelper {
 
     final String clientId = "87654321";
     final String username ="tien_le29";
-    final String password = "aio_RegQ93MLDrzFJyKOn2M1zc0s9ELd";
+    final String password = "aio_uQgL57eZyILJP45T7O0hWgzm60ta";
     MemoryPersistence memPer;
     MqttClient client;
     final String serverUri = "tcp://io.adafruit.com:1883";
-
+    private Queue<Float> tempuratureData = new LinkedList<>();
     public MQTTHelper(Context context){
         mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
         mqttAndroidClient.setCallback(new MqttCallbackExtended() {
@@ -49,9 +52,15 @@ public class MQTTHelper {
 
             @Override
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
-//                Log.w("Mqtt", mqttMessage.toString());
-                Log.d("TEST", topic + "***" + mqttMessage.toString());
+                Log.w("Mqtt", mqttMessage.toString());
+
+                if(topic.equals("tien_le29/feeds/do-an-da-nganh.nhiet-do")){
+                    Log.d("Chart", mqttMessage.toString());
+                }
+
+
             }
+
 
             @Override
             public void deliveryComplete(IMqttDeliveryToken iMqttDeliveryToken) {

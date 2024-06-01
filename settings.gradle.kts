@@ -19,6 +19,7 @@ dependencyResolutionManagement {
         // install paho-snapshots library
         maven {
             url = uri("https://repo.eclipse.org/content/repositories/paho-snapshots/")
+            url = uri("https://jitpack.io")
         }
     }
 }

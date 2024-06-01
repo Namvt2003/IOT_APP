@@ -1,14 +1,20 @@
 package com.example.iot_application;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 //import androidx.activity.EdgeToEdge;
 //import Log
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -22,7 +28,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MainActivity extends AppCompatActivity {
 
     MQTTHelper mqttHelper;
-    TextView txtTemp, txtHumid, air_quality, txtSoil,  txtAI, txtTemp2;
+    TextView txtTemp, txtHumid, air_quality, txtSoil,  txtAI, txtTemp2,txtLux;
     SwitchCompat txtPump,txtLight;
     private MqttAndroidClient mqttAndroidClient;
 
@@ -38,11 +44,20 @@ public class MainActivity extends AppCompatActivity {
         });
         txtTemp = findViewById(R.id.temperature);
         txtHumid = findViewById(R.id.humidity);
-        //air_quality = findViewById(R.id.air_quality);
+
+        txtLux = findViewById(R.id.lux);
         txtLight = findViewById(R.id.light);
         txtPump = findViewById(R.id.turbine);
         txtSoil = findViewById(R.id.soil);
         txtAI = findViewById(R.id.AI);
+        Button btnGoToGraph = findViewById(R.id.btnGoToGraph);
+        btnGoToGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
         setupUI();
         startMQTT();
     }
@@ -71,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
                     txtSoil.setText(message.toString() + "%");
                 } else if (topic.equals("tien_le29/feeds/do-an-da-nganh.nhan-dien-ai")){
                     txtAI.setText(message.toString());
+                }else if(topic.equals("tien_le29/feeds/do-an-da-nganh.anh-sang")){
+                    txtLux.setText(message.toString() + "lux");
                 }
+
             }
 
 
