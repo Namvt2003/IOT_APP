@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             String topic = "tien_le29/feeds/do-an-da-nganh.may-bom";
             String message = isChecked ? "1" : "0";
             try {
-                mqttHelper.publicMessage(topic, message);
+                mqttHelper.publishMessage(topic, message);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             String topic = "tien_le29/feeds/do-an-da-nganh.bong-den";
             String message = isChecked ? "1" : "0";
             try {
-                mqttHelper.publicMessage(topic, message);
+                mqttHelper.publishMessage(topic, message);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
