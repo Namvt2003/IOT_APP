@@ -29,7 +29,7 @@ public class MQTTHelper {
 
     final String clientId = "87654321";
     final String username ="tien_le29";
-    final String password = "aio_uQgL57eZyILJP45T7O0hWgzm60ta";
+    final String password = "aio_tUKi06Xv8hM3sUM9lGWRlWv8lLBL";
     MemoryPersistence memPer;
     MqttClient client;
     final String serverUri = "tcp://io.adafruit.com:1883";
@@ -54,9 +54,7 @@ public class MQTTHelper {
             public void messageArrived(String topic, MqttMessage mqttMessage) throws Exception {
                 Log.w("Mqtt", mqttMessage.toString());
 
-                if(topic.equals("tien_le29/feeds/do-an-da-nganh.nhiet-do")){
-                    Log.d("Chart", mqttMessage.toString());
-                }
+
 
 
             }
