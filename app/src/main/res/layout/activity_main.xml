@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#7EC8E3">
-    <!-- Header -->
+
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +37,6 @@
             android:shadowRadius="1"/>
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -58,8 +56,6 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="1"/>
-
-
     </LinearLayout>
 
     <!-- Sensor Data Section -->
@@ -78,7 +74,7 @@
             android:gravity="center"
             android:text="Temperature"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
         <TextView
@@ -91,9 +87,8 @@
             android:gravity="center"
             android:text="Humidity"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
-
 
         <TextView
             android:id="@+id/lightLabel"
@@ -101,7 +96,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Light"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:background="#D80000"
@@ -125,9 +120,8 @@
             android:gravity="center"
             android:text="30°C"
             android:textColor="#ffffff"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            />
+            android:textSize="15sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/humidity"
             android:layout_width="0dp"
@@ -138,16 +132,15 @@
             android:gravity="center"
             android:text="50 %"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textStyle="bold"/>
-
         <TextView
             android:id="@+id/lux"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="100 Lux"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:background="@drawable/rounded_corner"
@@ -156,7 +149,6 @@
     </LinearLayout>
 
     <!-- Additional Data Section -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -172,11 +164,8 @@
             android:gravity="center"
             android:text="Soil quality"
             android:textColor="#ffffff"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
-
-
-
 
         <TextView
             android:id="@+id/AILabel"
@@ -184,7 +173,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="AI Result"
-            android:textSize="24sp"
+            android:textSize="15sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:background="#D80000"
@@ -204,20 +193,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="0.3 g/m³"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:background="@drawable/rounded_corner"
             android:textStyle="bold"
             android:layout_marginEnd="4dp"/>
-
         <TextView
             android:id="@+id/AI"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="AI Function"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:background="@drawable/rounded_corner"
@@ -232,6 +220,61 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnGoToTempGraph"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View Temperature Graph"
+                android:layout_marginEnd="4dp"
+                android:background="@color/design_default_color_primary"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btnGoToHumidityGraph"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="View Humidity Graph"
+                android:background="@color/design_default_color_primary"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnGoToLightGraph"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View Light Graph"
+                android:layout_marginEnd="4dp"
+                android:background="@color/design_default_color_primary"
+                android:textColor="#FFFFFF"/>
+
+            <Button
+                android:id="@+id/btnGoToSoilGraph"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View Soil Graph"
+                android:layout_marginStart="4dp"
+                android:background="@color/design_default_color_primary"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/light"
             android:layout_width="wrap_content"
@@ -253,15 +296,5 @@
             android:textOn="Pump ON"
             android:textOff="Pump OFF"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <Button
-            android:id="@+id/btnGoToGraph"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View Graph"
-            android:layout_marginTop="16dp"
-            android:background="@color/design_default_color_primary"
-            android:textColor="#FFFFFF"/>
     </LinearLayout>
 </LinearLayout>

@@ -50,14 +50,32 @@ public class MainActivity extends AppCompatActivity {
         txtPump = findViewById(R.id.turbine);
         txtSoil = findViewById(R.id.soil);
         txtAI = findViewById(R.id.AI);
-        Button btnGoToGraph = findViewById(R.id.btnGoToGraph);
-        btnGoToGraph.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(intent);
-            }
+        Button btnGoToTempGraph = findViewById(R.id.btnGoToTempGraph);
+
+        btnGoToTempGraph.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(intent);
         });
+
+        Button btnGoToHumidGraph = findViewById(R.id.btnGoToHumidityGraph);
+        btnGoToHumidGraph.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+            startActivity(intent);
+        });
+
+        Button btnGoToLightGraph = findViewById(R.id.btnGoToLightGraph);
+        btnGoToLightGraph.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity4.class);
+            startActivity(intent);
+        });
+
+        Button btnGoToSoilGraph = findViewById(R.id.btnGoToSoilGraph);
+        btnGoToSoilGraph.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity5.class);
+            startActivity(intent);
+        });
+
+
         setupUI();
         startMQTT();
     }
