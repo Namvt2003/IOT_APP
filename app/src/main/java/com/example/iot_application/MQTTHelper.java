@@ -172,7 +172,7 @@ public class MQTTHelper {
     };
     final String clientId = "87654321";
     final String username = "tien_le29";
-    final String password = "aio_TOfo20XtF8QTA96QFwor0XBLlfcd";
+    final String password = "aio_OObC85Mgxhq1OYEbFUBxFGzU12Wb";
     MemoryPersistence memPer;
     final String serverUri = "tcp://io.adafruit.com:1883";
 
