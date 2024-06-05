@@ -2,7 +2,7 @@ package com.example.iot_application;
 
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.app.AlertDialog;
 //import androidx.activity.EdgeToEdge;
 //import Log
 import android.util.Log;
@@ -98,14 +98,19 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("TEST", topic + "***" + message.toString());
                 if(topic.equals("tien_le29/feeds/do-an-da-nganh.nhiet-do")){
                     txtTemp.setText(message.toString() + "°C");
+                    checkTemperatureRange(Double.parseDouble(message.toString()));
                 } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am")){
                     txtHumid.setText(message.toString() + "%");
+                    checkHumidityRange(Double.parseDouble(message.toString()));
                 } else if(topic.equals("tien_le29/feeds/do-an-da-nganh.do-am-dat")){
                     txtSoil.setText(message.toString() + "%");
+                    checkSoilMoistureRange(Double.parseDouble(message.toString()));
                 } else if (topic.equals("tien_le29/feeds/do-an-da-nganh.nhan-dien-ai")){
                     txtAI.setText(message.toString());
+
                 }else if(topic.equals("tien_le29/feeds/do-an-da-nganh.anh-sang")){
                     txtLux.setText(message.toString() + "lux");
+                    checkLuxRange(Double.parseDouble(message.toString()));
                 }
 
             }
@@ -143,5 +148,39 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+
+    private void checkTemperatureRange(double temperature) {
+        if (temperature < 0 || temperature > 100) {
+            showAlert("Temperature out of range", "The temperature is " + temperature + "°C. Please check the system.");
+        }
+    }
+
+    private void checkHumidityRange(double humidity) {
+        if (humidity < 20 || humidity > 80) {
+            showAlert("Humidity out of range", "The humidity is " + humidity + "%. Please check the system.");
+        }
+    }
+
+    private void checkSoilMoistureRange(double soilMoisture) {
+        if (soilMoisture < 10 || soilMoisture > 90) {
+            showAlert("Soil moisture out of range", "The soil moisture is " + soilMoisture + "%. Please check the system.");
+        }
+    }
+
+    private void checkLuxRange(double lux) {
+        if (lux < 100 || lux > 10000) {
+            showAlert("Light level out of range", "The light level is " + lux + " lux. Please check the system.");
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

@@ -260,7 +260,7 @@ public class MainActivity2 extends AppCompatActivity {
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
 
         chartData = new ArrayList<>();
-        chartData.add(new CustomDataEntry("1998",9.8));
+        chartData.add(new CustomDataEntry("",0.0));
         set = Set.instantiate();
         set.data(chartData);
         series1Mapping = set.mapAs("{ x: 'x', value: 'value' }");
